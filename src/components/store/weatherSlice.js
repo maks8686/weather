@@ -3,12 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = () => {
   const localParams = JSON.parse(localStorage.getItem("weather"));
   if (!localParams) {
-    return {
+    return ({
       point: { pointName: "Москва", lat: 55.755826, lon: 37.6173 },
       status: "preload",
       autocomplete:[],
       weather:{}
-    };
+    });
   }
   return localParams;
 };
