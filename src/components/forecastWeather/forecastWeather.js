@@ -18,8 +18,8 @@ export const ForecastWeather=()=>{
       <StyledForecastCard key={item.dt}>
       <DateAndTemp>
       <div>{formatDate(item.dt)}</div>
-      {Math.round(item.temp.day)}°C
-      {Math.round(item.temp.night)}°C
+      <div>днем {Math.round(item.temp.day)}</div>
+      <div>ночью {Math.round(item.temp.night)}</div>
       </DateAndTemp>
       <img
             src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
