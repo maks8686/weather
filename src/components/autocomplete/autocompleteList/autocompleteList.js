@@ -6,6 +6,7 @@ import { Autocomplete } from "./autocomplete.styled";
 export const Autocompletelist = ({ showAutocomplete, itemClick }) => {
   const autocomplArr = useSelector((state) => state.weather.autocomplete);
 
+
   if (showAutocomplete) {
     return (
       

@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { formatDate } from "../../utils";
+import { Loader } from './../loader/loader';
 import {
   BigTempFont,
   Descript,
@@ -47,7 +48,7 @@ export const TodayWeather = () => {
       </StyledTodayWeather>
     );
   }else if(stat.weather.status === "load"){
-      return <h1>Загрузка...</h1>
+      return <Loader/>
   }else if(stat.weather.status === "error"){
       return <h1>Ошибка загрузки...Что-то пошло не так.</h1>
   } else {
