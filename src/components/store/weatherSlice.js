@@ -3,12 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = () => {
   const localParams = JSON.parse(localStorage.getItem("weather"));
   if (!localParams) {
-    return ({
-      point: { pointName: "Москва", lat: 55.755826, lon: 37.6173 },
+    return {
+      point: { pointName: "", lat: null, lon: null },
       status: "preload",
-      autocomplete:[],
-      weather:{}
-    });
+      autocomplete: [],
+      weather: {},
+    };
   }
   return localParams;
 };
@@ -17,7 +17,10 @@ export const weatherSlice = createSlice({
   name: "weather",
   initialState,
   reducers: {
-    
+    setCityNameState: (state, action) => {
+      state.point.pointName = action.payload;
+    },
+
     setCoord: (state, action) => {
       state.status = "get coord";
       state.point.pointName = action.payload.name;
@@ -25,14 +28,27 @@ export const weatherSlice = createSlice({
       state.point.lon = action.payload.lon;
       console.log(state);
     },
-    setWeather:(state, action)=>{
-      state.weather =action.payload.data
-      state.status = "set weather"
+    setWeather: (state, action) => {
+      state.weather = action.payload.data;
+      state.status = "set weather";
       console.log(state);
-    }
+    },
+    setAutocompleteArr: (state, action) => {
+      state.autocomplete = action.payload;
+    },
+    setStatus: (state, action) => {
+      state.status = action.payload;
+    },
   },
 });
 
-export const { setCoord, setWeather } = weatherSlice.actions;
+export const {
+  setCoord,
+  setWeather,
+  setAutocompleteArr,
+  setCityNameState,
+  setShowAutoComplete,
+  setStatus
+} = weatherSlice.actions;
 
 export default weatherSlice.reducer;

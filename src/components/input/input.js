@@ -1,40 +1,54 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {  setCityData } from "../store/action";
+import { Autocompletelist } from "../autocomplete/autocompleteList/autocompleteList";
+import { setCityData } from "../store/action";
 import { StyledInput } from "./input.styled";
-
+import { setAutocomplArr } from "../store/action";
 
 export const Input = () => {
-  const [cityName,setCityName]=useState('')
-  const dispatch=useDispatch()
+  const [cityName, setCityName] = useState("");
+  const [showAutocomplete, setShowAutocomplete] =useState(false)
+  const dispatch = useDispatch();
 
-const handleSubmit=(e)=>{
-  if(cityName.trim()){
-    dispatch(setCityData(cityName))
-    setCityName('')
+  const handleSubmit = (e) => {
+    if (cityName.trim()) {
+      dispatch(setCityData(cityName));
+      setShowAutocomplete(false);
+      setCityName("");
+    }
+  };
+  const autocompItemClick=(name)=>{
+    dispatch(setCityData(name));
+    setShowAutocomplete(false);
+    setCityName("");
   }
-}
 
-const handleChange = (e) => {
-  setCityName(e.currentTarget.value);
-  
-};
+  const handleChange = (e) => {
+    setCityName(e.currentTarget.value);
+    setTimeout(()=> {dispatch(setAutocomplArr(cityName))
+    setShowAutocomplete(true)},1000)
+    console.log(e.currentTarget.value);
+  };
 
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit(e);
+    }
+  };
 
-
- const onKeyPress=(e)=>{
-  if(e.key==="Enter"){
-    handleSubmit(e)
-  }
- }
   return (
-    
-      <StyledInput 
-      type="input" 
-      placeholder="Введи город" 
-      value={cityName}
-      onKeyPress={onKeyPress}
-      onChange={handleChange}
+    <div >
+      <StyledInput
+        type="input"
+        placeholder="Введи город"
+        value={cityName}
+        onKeyPress={onKeyPress}
+        onChange={handleChange}
       />
+      <Autocompletelist
+        showAutocomplete={showAutocomplete}
+        itemClick={autocompItemClick}
+      />
+    </div>
   );
 };
