@@ -10,7 +10,6 @@ import GlobalStyle from "./globalStyles";
 function App() {
   const weather = useSelector(state=>state.weather);
   useEffect(() => localStorage.setItem("weather", JSON.stringify(weather)));
-  console.log("апп компонент рендерится"); 
   
   return (
     <StyledApp>

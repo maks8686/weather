@@ -26,12 +26,10 @@ export const weatherSlice = createSlice({
       state.point.pointName = action.payload.name;
       state.point.lat = action.payload.lat;
       state.point.lon = action.payload.lon;
-      console.log(state);
     },
     setWeather: (state, action) => {
       state.weather = action.payload.data;
       state.status = "set weather";
-      console.log(state);
     },
     setAutocompleteArr: (state, action) => {
       state.autocomplete = action.payload;

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { formatDate } from "../../utils";
-import { Loader } from './../loader/loader';
+import { Loader } from "./../loader/loader";
 import {
   BigTempFont,
   Descript,
@@ -12,13 +12,10 @@ export const TodayWeather = () => {
   const todayWeather = useSelector((state) => state.weather);
   const stat = useSelector((state) => state);
 
-  console.log(stat);
-
   if (stat.weather.status === "set weather") {
     const { dt, pressure, temp, humidity, feels_like, wind_speed } =
       todayWeather.weather.current;
     const { description, icon } = todayWeather.weather.current.weather[0];
-    console.log("иф тудей везер отработал");
     return (
       <StyledTodayWeather>
         <div>{todayWeather.point.pointName}</div>
@@ -47,10 +44,10 @@ export const TodayWeather = () => {
         </Details>
       </StyledTodayWeather>
     );
-  }else if(stat.weather.status === "load"){
-      return <Loader/>
-  }else if(stat.weather.status === "error"){
-      return <h1>Ошибка загрузки...Что-то пошло не так.</h1>
+  } else if (stat.weather.status === "load") {
+    return <Loader />;
+  } else if (stat.weather.status === "error") {
+    return <h1>Ошибка загрузки...Что-то пошло не так.</h1>;
   } else {
     return null;
   }

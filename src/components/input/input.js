@@ -27,7 +27,6 @@ export const Input = () => {
     setCityName(e.currentTarget.value);
     setTimeout(()=> {dispatch(setAutocomplArr(cityName))
     setShowAutocomplete(true)},1000)
-    console.log(e.currentTarget.value);
   };
 
   const onKeyPress = (e) => {

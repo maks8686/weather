@@ -9,7 +9,7 @@ import {
 export const ForecastWeather = () => {
   const forecastWeather = useSelector((state) => state.weather.weather.daily);
   const stat = useSelector((state) => state);
-  console.log(forecastWeather);
+  
 
   if (stat.weather.status === "set weather") {
     return (
