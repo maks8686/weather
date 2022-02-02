@@ -23,7 +23,6 @@ export const StyledForecastCard = styled.div`
 `;
 export const DateAndTemp = styled.div`
   display: flex;
-
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
