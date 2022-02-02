@@ -24,14 +24,16 @@ export const Input = () => {
   }
 
   const handleChange = (e) => {
-    setCityName(e.currentTarget.value);
-    setTimeout(()=> {dispatch(setAutocomplArr(cityName))
-    setShowAutocomplete(true)},1000)
+    setCityName(e.currentTarget.value)
+    if(cityName.length>2){
+    dispatch(setAutocomplArr(cityName))
+    setShowAutocomplete(true)}
   };
 
   const onKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSubmit(e);
+      setShowAutocomplete(false);
     }
   };
 

@@ -7,4 +7,7 @@ margin: 1px;
 background-color: white;
 width: 200px;
 border-radius: 5px;
+:hover{
+    background-color: LightBlue;
+  }
 `
