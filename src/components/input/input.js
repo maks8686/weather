@@ -4,7 +4,7 @@ import { Autocompletelist } from "../autocomplete/autocompleteList/autocompleteL
 import { setCityData } from "../store/action";
 import { InputHolder, StyledInput } from "./input.styled";
 import { setAutocomplArr } from "../store/action";
-import searchBtn from "../../assets/icons/searchBtn.svg"
+import searchBtn from "../../assets/icons/searchBtn.svg";
 
 export const Input = () => {
   const [cityName, setCityName] = useState("");
@@ -42,14 +42,19 @@ export const Input = () => {
   return (
     <div>
       <InputHolder>
-      <StyledInput
-        type="input"
-        placeholder="Введи город"
-        value={cityName}
-        onKeyPress={onKeyPress}
-        onChange={handleChange}
-      />
-      <img src={searchBtn} width={20} alt="searchBtn" onClick={handleSubmit}/>
+        <StyledInput
+          type="input"
+          placeholder="Введи город"
+          value={cityName}
+          onKeyPress={onKeyPress}
+          onChange={handleChange}
+        />
+        <img
+          src={searchBtn}
+          width={20}
+          alt="searchBtn"
+          onClick={handleSubmit}
+        />
       </InputHolder>
       <Autocompletelist
         showAutocomplete={showAutocomplete}
