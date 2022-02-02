@@ -7,7 +7,7 @@ import { setAutocomplArr } from "../store/action";
 
 export const Input = () => {
   const [cityName, setCityName] = useState("");
-  const [showAutocomplete, setShowAutocomplete] =useState(false)
+  const [showAutocomplete, setShowAutocomplete] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -17,17 +17,18 @@ export const Input = () => {
       setCityName("");
     }
   };
-  const autocompItemClick=(name)=>{
+  const autocompItemClick = (name) => {
     dispatch(setCityData(name));
     setShowAutocomplete(false);
     setCityName("");
-  }
+  };
 
   const handleChange = (e) => {
-    setCityName(e.currentTarget.value)
-    if(cityName.length>2){
-    dispatch(setAutocomplArr(cityName))
-    setShowAutocomplete(true)}
+    setCityName(e.currentTarget.value);
+    if (cityName.length > 1) {
+      dispatch(setAutocomplArr(cityName));
+      setShowAutocomplete(true);
+    }
   };
 
   const onKeyPress = (e) => {
@@ -38,7 +39,7 @@ export const Input = () => {
   };
 
   return (
-    <div >
+    <div>
       <StyledInput
         type="input"
         placeholder="Введи город"
