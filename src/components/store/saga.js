@@ -33,7 +33,7 @@ function* getCoordWorker(action) {
 function* getAutocompArr(action) {
   try {
     const cityArr = yield axios.get(
-      `http://autocomplete.travelpayouts.com/places2?term=${action.payload}&locale=ru&types[]=city`
+      `https://autocomplete.travelpayouts.com/places2?term=${action.payload}&locale=ru&types[]=city`
     );
     const data = cityArr.data;
     yield put(setAutocompleteArr(data));
