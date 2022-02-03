@@ -10,7 +10,7 @@ export const StyledForecast = styled.div`
   align-items: center;
   flex-direction: row;
   padding: 0 auto;
-  color: #ffffff;
+  color: #fff;
 `;
 
 export const StyledForecastCard = styled.div`

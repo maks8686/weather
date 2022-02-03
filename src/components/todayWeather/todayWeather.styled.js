@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { baseTheme } from './../../theme';
 
 export const StyledTodayWeather = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ export const StyledTodayWeather = styled.div`
   margin: 10px;
   font-size: 24px;
   font-family: sans-serif;
-  color: #ffffff;
+  color: ${baseTheme.colors.fontColor};
 `;
 export const BigTempFont = styled.div`
   font-size: 50px;

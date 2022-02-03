@@ -15,8 +15,14 @@ export const InputHolder = styled.div`
 display: flex;
 flex-direction:row;
 justify-content: center;
-align-content: center;
 align-items: center;
 margin-top: 20px;
-
+`
+export const IntutAndAutocompleteWrapper = styled.div`
+display: flex;
+flex-direction:column;
+justify-content: center;
+align-content: center;
+align-items: center;
+margin: 0 50%;
 `

@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { AppStatus } from "./appStatusConst";
 
 const initialState = () => {
   const localParams = JSON.parse(localStorage.getItem("weather"));
   if (!localParams) {
     return {
       point: { pointName: "", lat: null, lon: null },
-      status: "preload",
+      status: AppStatus.PRELOAD,
       autocomplete: [],
       weather: {},
     };
@@ -22,14 +23,14 @@ export const weatherSlice = createSlice({
     },
 
     setCoord: (state, action) => {
-      state.status = "get coord";
+      state.status = AppStatus.GET_COORD;
       state.point.pointName = action.payload.name;
       state.point.lat = action.payload.lat;
       state.point.lon = action.payload.lon;
     },
     setWeather: (state, action) => {
       state.weather = action.payload.data;
-      state.status = "set weather";
+      state.status = AppStatus.SET_WEATHER;
     },
     setAutocompleteArr: (state, action) => {
       state.autocomplete = action.payload;

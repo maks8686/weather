@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { baseTheme } from './theme';
 
 export const StyledApp=styled.div`
 overflow-y: auto;
@@ -7,7 +8,7 @@ overflow-y: auto;
   }
 display: flex;
 flex-direction: column;
-background: linear-gradient(#00BFFF,#ADD8E6);
+background: linear-gradient(${baseTheme.colors.primary},${baseTheme.colors.secondary});
 height:100vh;
 `
 

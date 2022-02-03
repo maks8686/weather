@@ -1,6 +1,8 @@
-import axios from "axios";
-import { put, takeEvery } from "redux-saga/effects";
+
+import { put, takeEvery,call } from "redux-saga/effects";
+import { AppStatus } from "./appStatusConst";
 import { setCityData, setAutocomplArr } from "./action";
+import { placesApi, weatherApi } from "../services/api/placesApi";
 import {
   setCoord,
   setWeather,
@@ -9,33 +11,34 @@ import {
 } from "./weatherSlice";
 
 function* getCoordWorker(action) {
-  const apiKey = "c0c767d0dbd4142401b9bca74616fa02";
+  
   try {
-    yield put(setStatus("load"));
-    const place = yield axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${action.payload}&appid=${apiKey}`
+    yield put(setStatus(AppStatus.LOAD));
+    const place = yield call(
+      weatherApi.get,`weather?q=${action.payload}&appid=${process.env.REACT_APP_API_KEY}`
     );
     const { name } = place.data;
     const { lat, lon } = place.data.coord;
     const cityData = { name, lat, lon };
     yield put(setCoord(cityData));
 
-    const weather = yield axios.get(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&units=metric&lang=ru&appid=${apiKey}`
+    const weather = yield call(
+      weatherApi.get,`onecall?lat=${lat}&lon=${lon}&exclude={part}&units=metric&lang=ru&appid=${process.env.REACT_APP_API_KEY}`
     );
+    
 
     yield put(setWeather(weather));
   } catch (err) {
-    yield put(setStatus("error"));
+    yield put(setStatus(AppStatus.ERROR));
   }
 }
 
 function* getAutocompArr(action) {
   try {
-    const cityArr = yield axios.get(
-      `https://autocomplete.travelpayouts.com/places2?term=${action.payload}&locale=ru&types[]=city`
+    const {data} = yield call(placesApi.get,
+      `places2?term=${action.payload}&locale=ru&types[]=city`
     );
-    const data = cityArr.data;
+    
     yield put(setAutocompleteArr(data));
   } catch (err) {}
 }

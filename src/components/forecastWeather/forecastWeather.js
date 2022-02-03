@@ -8,10 +8,9 @@ import {
 
 export const ForecastWeather = () => {
   const forecastWeather = useSelector((state) => state.weather.weather.daily);
-  const stat = useSelector((state) => state);
-  
+  const appState = useSelector((state) => state);
 
-  if (stat.weather.status === "set weather") {
+  if (appState.weather.status === "set weather") {
     return (
       <StyledForecast>
         {forecastWeather.slice(1, 7).map((item) => {
@@ -32,7 +31,6 @@ export const ForecastWeather = () => {
         })}
       </StyledForecast>
     );
-  } else {
-    return null;
   }
+  return null;
 };

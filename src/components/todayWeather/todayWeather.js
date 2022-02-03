@@ -23,7 +23,7 @@ export const TodayWeather = () => {
         <BigTempFont>
           <img
             src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-            alt="weatherImage"
+            alt=""
           />
           {Math.round(temp)}°C
         </BigTempFont>{" "}
