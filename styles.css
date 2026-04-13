@@ -1,0 +1,160 @@
+/* Приятный легкий дизайн для приложения погоды */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Segoe UI', 'Open Sans', Helvetica, Sans-Serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+}
+
+/* Контейнер приложения */
+div[class*="sc-global"] + div {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* Поле ввода */
+input[type="input"] {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+input[type="input"]:focus {
+  border-color: #667eea;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+input[type="input"]::placeholder {
+  color: #adb5bd;
+}
+
+/* Кнопка поиска */
+img[alt="searchBtn"] {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+img[alt="searchBtn"]:hover {
+  transform: scale(1.1);
+}
+
+/* Блок с информацией о погоде */
+div[style*="font-size: 24px"] {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 16px;
+  padding: 25px;
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Температура */
+div[style*="font-size: 50px"] {
+  color: #667eea;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+}
+
+/* Описание погоды */
+div[style*="font-size: 15px"] {
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Дополнительная информация */
+div[style*="justify-content: space-around"] {
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 12px;
+  padding: 15px;
+  margin: 10px 0;
+}
+
+div[style*="justify-content: space-around"] div {
+  color: #495057;
+  font-weight: 500;
+}
+
+/* Анимация загрузки */
+div[style*="border-radius: 50%"] {
+  border-color: #667eea !important;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Заголовок города */
+div[style*="margin: 10px"] > div:first-child {
+  color: #343a40;
+  font-weight: 600;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* Дата */
+div[style*="margin: 10px"] > div:nth-child(2) {
+  color: #6c757d;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  #root {
+    padding: 15px;
+  }
+  
+  div[class*="sc-global"] + div {
+    padding: 20px;
+  }
+  
+  input[type="input"] {
+    max-width: 100%;
+  }
+}
+
+/* Плавные переходы */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Ховер эффекты для интерактивных элементов */
+img[alt="searchBtn"],
+input[type="input"] {
+  cursor: pointer;
+}
+
+input[type="input"] {
+  cursor: text;
+}
