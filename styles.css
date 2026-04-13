@@ -31,26 +31,34 @@ div[class*="sc-global"] + div {
 }
 
 /* Поле ввода */
-input[type="input"] {
-  background: #f8f9fa;
-  border: 2px solid #e9ecef;
-  border-radius: 12px;
-  padding: 12px 20px;
-  font-size: 16px;
-  outline: none;
-  transition: all 0.3s ease;
-  width: 100%;
-  max-width: 300px;
+input[type="text"],
+input:not([type]),
+input {
+  background: #f8f9fa !important;
+  border: 2px solid #e9ecef !important;
+  border-radius: 12px !important;
+  padding: 14px 20px !important;
+  font-size: 16px !important;
+  outline: none !important;
+  transition: all 0.3s ease !important;
+  width: 100% !important;
+  min-width: 280px !important;
+  color: #343a40 !important;
+  display: block !important;
 }
 
-input[type="input"]:focus {
-  border-color: #667eea;
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+input[type="text"]:focus,
+input:not([type]):focus,
+input:focus {
+  border-color: #667eea !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15) !important;
 }
 
-input[type="input"]::placeholder {
-  color: #adb5bd;
+input[type="text"]::placeholder,
+input:not([type])::placeholder,
+input::placeholder {
+  color: #adb5bd !important;
 }
 
 /* Кнопка поиска */
@@ -139,8 +147,9 @@ div[style*="margin: 10px"] > div:nth-child(2) {
     padding: 20px;
   }
   
-  input[type="input"] {
-    max-width: 100%;
+  input[type="text"],
+  input:not([type]) {
+    min-width: 100%;
   }
 }
 
@@ -151,10 +160,12 @@ div[style*="margin: 10px"] > div:nth-child(2) {
 
 /* Ховер эффекты для интерактивных элементов */
 img[alt="searchBtn"],
-input[type="input"] {
+input[type="text"],
+input:not([type]) {
   cursor: pointer;
 }
 
-input[type="input"] {
+input[type="text"],
+input:not([type]) {
   cursor: text;
 }
